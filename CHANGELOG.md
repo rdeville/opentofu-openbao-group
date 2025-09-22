@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.1.0 (2025-09-22)
+
+### ✨ Minor
+
+  * ✨ Add file to deploy and manage OpenBao identity groups (!2) by Romain Deville ([`807b05e`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/807b05effcdf3af2baa5d2af0d48b27ce59048a9))
+  * ✨ Add file to deploy and manage OpenBao identity groups by Romain Deville ([`f4e3b94`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/f4e3b94a91de3d6cfa9287188e9341e4216aef55)) 🔏
+
+### 🔊 Others
+
+  * 📝 Update README with desc and generated from tf-docs by Romain Deville ([`1339b1e`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/1339b1e1bc4007d160862276bdab74682d83e15e)) 🔏
+
 ## v0.0.1 (2025-09-22)
 
 ### 🩹 Patch
