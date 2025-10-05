@@ -56,17 +56,6 @@ variable "member_group_ids" {
   nullable = false
 }
 
-variable "member_group_names" {
-  type        = set(string)
-  description = <<-EOM
-  A list of Group Name to be assigned as group members. Not allowed on external
-  groups.
-  EOM
-
-  default  = []
-  nullable = false
-}
-
 variable "skip_member_entity_verification" {
   type        = bool
   description = <<-EOM
@@ -78,23 +67,10 @@ variable "skip_member_entity_verification" {
   nullable = false
 }
 
-
-
 variable "member_entity_ids" {
   type        = set(string)
   description = <<-EOM
   A list of Entity IDs to be assigned as group members. Not allowed on external
-  groups.
-  EOM
-
-  default  = []
-  nullable = false
-}
-
-variable "member_entity_names" {
-  type        = set(string)
-  description = <<-EOM
-  A list of Entity Name to be assigned as group members. Not allowed on external
   groups.
   EOM
 
