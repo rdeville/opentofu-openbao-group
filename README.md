@@ -147,13 +147,8 @@ module "group" {
   name  = "baz"
 
   # Example variables
-  # Using IDs
   member_group_ids = [
     module.first_subgroup.group.id,
-  ]
-  # Using Names
-  member_group_names = [
-    module.first_subgroup.group.name,
   ]
   skip_member_group_verification = true
 }
@@ -183,13 +178,8 @@ module "group" {
   name  = "bar"
 
   # Example variables
-  # Using IDs
   member_entity_ids = [
     resource.vault_identity_entity.first.id
-  ]
-  # Using Names
-  member_entity_names = [
-    resource.vault_identity_entity.second.name
   ]
   skip_member_entity_verification = true
 }
@@ -263,19 +253,6 @@ module "group" {
 * [vault](https://search.opentofu.org/provider/hashicorp/vault/):
   `~>5.0`
 
-### Data Sources
-
-* [data.vault_identity_entity.ids](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity)
-  > Ensure vault identity entities exists, gathered by IDs
-* [data.vault_identity_entity.names](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity)
-  > Ensure vault identity entities exists, gathered by Names
-* [data.vault_identity_group.ids](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_group)
-  > Ensure vault identity groups exists, gathered by IDs
-* [data.vault_identity_group.names](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_group)
-  > Ensure vault identity groups exists, gathered by Names
-* [data.vault_namespace.this](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/namespace)
-  > Ensure namespace exists
-
 ### Resources
 
 * [resource.vault_identity_group.this](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group)
@@ -317,10 +294,8 @@ string
 * [metadata](#metadata)
 * [skip_member_group_verification](#skip_member_group_verification)
 * [member_group_ids](#member_group_ids)
-* [member_group_names](#member_group_names)
 * [skip_member_entity_verification](#skip_member_entity_verification)
 * [member_entity_ids](#member_entity_ids)
-* [member_entity_names](#member_entity_names)
 * [policies](#policies)
 
 
@@ -451,32 +426,6 @@ groups.
   </div>
 </details>
 
-##### `member_group_names`
-
-A list of Group Name to be assigned as group members. Not allowed on external
-groups.
-
-<details style="width: 100%;display: inline-block">
-  <summary>Type & Default</summary>
-  <div style="height: 1em"></div>
-  <div style="width:64%; float:left;">
-  <p style="border-bottom: 1px solid #333333;">Type</p>
-
-  ```hcl
-  set(string)
-  ```
-
-  </div>
-  <div style="width:34%;float:right;">
-  <p style="border-bottom: 1px solid #333333;">Default</p>
-
-  ```hcl
-  []
-  ```
-
-  </div>
-</details>
-
 ##### `skip_member_entity_verification`
 
 Boolean to skip evaluation of the existence of subgroups.
@@ -506,32 +455,6 @@ Useful when deploying subgroups with parent groups.
 ##### `member_entity_ids`
 
 A list of Entity IDs to be assigned as group members. Not allowed on external
-groups.
-
-<details style="width: 100%;display: inline-block">
-  <summary>Type & Default</summary>
-  <div style="height: 1em"></div>
-  <div style="width:64%; float:left;">
-  <p style="border-bottom: 1px solid #333333;">Type</p>
-
-  ```hcl
-  set(string)
-  ```
-
-  </div>
-  <div style="width:34%;float:right;">
-  <p style="border-bottom: 1px solid #333333;">Default</p>
-
-  ```hcl
-  []
-  ```
-
-  </div>
-</details>
-
-##### `member_entity_names`
-
-A list of Entity Name to be assigned as group members. Not allowed on external
 groups.
 
 <details style="width: 100%;display: inline-block">
