@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.1.1 (2025-10-05)
+
+### 🩹 Patch
+
+  * 🐛 Remove use of data (!3) by Romain Deville ([`eff8008`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/eff8008fa73e297404cfbaa568b3af4bfe701d24))
+  * 🐛 Remove use of data by Romain Deville ([`f33c021`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/f33c0219263dd4dcfa7257439a0ab76b5ecb6c18)) 🔏
+
+### 🔊 Others
+
+  * 📝 Update README from tf-docs by Romain Deville ([`704d312`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/704d312408ce97daca74b56a17053a045c89fb02)) 🔏
+
 ## v0.1.0 (2025-09-22)
 
 ### ✨ Minor
