@@ -25,7 +25,7 @@ resource "vault_identity_group_member_entity_ids" "this" {
 
   exclusive         = true
   group_id          = vault_identity_group.this.id
-  member_entity_ids = tolist(var.member_entity_ids)
+  member_entity_ids = var.member_entity_ids
 }
 
 # Manage policies attached to the group

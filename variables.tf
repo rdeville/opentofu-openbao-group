@@ -46,7 +46,7 @@ variable "member_group_ids" {
 }
 
 variable "member_entity_ids" {
-  type        = set(string)
+  type        = list(string)
   description = <<-EOM
   A list of Entity IDs to be assigned as group members. Not allowed on external
   groups.
