@@ -34,17 +34,6 @@ variable "metadata" {
   nullable = false
 }
 
-variable "skip_member_group_verification" {
-  type        = bool
-  description = <<-EOM
-  Boolean to skip evaluation of the existence of subgroups.
-  Useful when deploying subgroups with parent groups.
-  EOM
-
-  default  = false
-  nullable = false
-}
-
 variable "member_group_ids" {
   type        = set(string)
   description = <<-EOM
@@ -56,19 +45,8 @@ variable "member_group_ids" {
   nullable = false
 }
 
-variable "skip_member_entity_verification" {
-  type        = bool
-  description = <<-EOM
-  Boolean to skip evaluation of the existence of subgroups.
-  Useful when deploying subgroups with parent groups.
-  EOM
-
-  default  = false
-  nullable = false
-}
-
 variable "member_entity_ids" {
-  type        = set(string)
+  type        = list(string)
   description = <<-EOM
   A list of Entity IDs to be assigned as group members. Not allowed on external
   groups.
@@ -85,4 +63,21 @@ variable "policies" {
   EOM
 
   default = []
+}
+
+variable "alias" {
+  type = object({
+    name           = string
+    mount_accessor = string
+  })
+  description = <<EOM
+  Object to specify alias to attach to the group. Object support following
+  arguments:
+  * `name`: String, the name of the alias, i.e. the group from the external
+    identity provider
+  * `mount_accessor`: the mount accessor associated with the alias, i.e. the
+    external identity provider.
+  EOM
+
+  default = null
 }

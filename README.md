@@ -1,4 +1,3 @@
-<!-- BEGIN DOTGIT-SYNC BLOCK MANAGED -->
 <!-- markdownlint-disable -->
 
 # 👋 Welcome to OpenBao Group
@@ -39,8 +38,6 @@
 Deployment and management of OpenBao Group.
 
 ---
-
-<!-- BEGIN DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
 
 ## 🚀 Usage
 
@@ -185,7 +182,6 @@ module "group" {
 }
 ```
 
-
 ### Deploy policies and attach them in another group
 
 ```hcl
@@ -232,6 +228,30 @@ module "group" {
 }
 ```
 
+### Deploy a group with an alias
+
+```hcl
+resource "vault_auth_backend" "oidc" {
+  type = "oidc"
+  path = "oidc"
+}
+
+module "group" {
+  source = "git::https://framagit.org/rdeville-public/opentofu/openbao-group.git"
+
+  # Required variables
+  name  = "bar"
+
+  # Example variables
+  type = "external"
+  alias = {
+    name           = "/path/in/oidc/provider"
+    mount_accessor = vault_auth_backend.oidc.accessor
+  }
+
+}
+```
+
 <!-- BEGIN TF-DOCS -->
 ## ⚙️ Module Content
 
@@ -257,6 +277,8 @@ module "group" {
 
 * [resource.vault_identity_group.this](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group)
   > Manage group identity
+* [resource.vault_identity_group_alias.this](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_alias)
+  >
 * [resource.vault_identity_group_member_entity_ids.this](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_member_entity_ids)
   > Manage identity associated with the group
 * [resource.vault_identity_group_member_group_ids.this](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_member_group_ids)
@@ -292,11 +314,10 @@ string
 * [namespace_path](#namespace_path)
 * [type](#type)
 * [metadata](#metadata)
-* [skip_member_group_verification](#skip_member_group_verification)
 * [member_group_ids](#member_group_ids)
-* [skip_member_entity_verification](#skip_member_entity_verification)
 * [member_entity_ids](#member_entity_ids)
 * [policies](#policies)
+* [alias](#alias)
 
 
 ##### `namespace_path`
@@ -374,32 +395,6 @@ A Map of additional metadata to associate with the group.
   </div>
 </details>
 
-##### `skip_member_group_verification`
-
-Boolean to skip evaluation of the existence of subgroups.
-Useful when deploying subgroups with parent groups.
-
-<details style="width: 100%;display: inline-block">
-  <summary>Type & Default</summary>
-  <div style="height: 1em"></div>
-  <div style="width:64%; float:left;">
-  <p style="border-bottom: 1px solid #333333;">Type</p>
-
-  ```hcl
-  bool
-  ```
-
-  </div>
-  <div style="width:34%;float:right;">
-  <p style="border-bottom: 1px solid #333333;">Default</p>
-
-  ```hcl
-  false
-  ```
-
-  </div>
-</details>
-
 ##### `member_group_ids`
 
 A list of Group IDs to be assigned as group members. Not allowed on external
@@ -426,32 +421,6 @@ groups.
   </div>
 </details>
 
-##### `skip_member_entity_verification`
-
-Boolean to skip evaluation of the existence of subgroups.
-Useful when deploying subgroups with parent groups.
-
-<details style="width: 100%;display: inline-block">
-  <summary>Type & Default</summary>
-  <div style="height: 1em"></div>
-  <div style="width:64%; float:left;">
-  <p style="border-bottom: 1px solid #333333;">Type</p>
-
-  ```hcl
-  bool
-  ```
-
-  </div>
-  <div style="width:34%;float:right;">
-  <p style="border-bottom: 1px solid #333333;">Default</p>
-
-  ```hcl
-  false
-  ```
-
-  </div>
-</details>
-
 ##### `member_entity_ids`
 
 A list of Entity IDs to be assigned as group members. Not allowed on external
@@ -464,7 +433,7 @@ groups.
   <p style="border-bottom: 1px solid #333333;">Type</p>
 
   ```hcl
-  set(string)
+  list(string)
   ```
 
   </div>
@@ -502,6 +471,39 @@ List of policies IDs or Names to attach to the group.
 
   </div>
 </details>
+
+##### `alias`
+
+  Object to specify alias to attach to the group. Object support following
+  arguments:
+  * `name`: String, the name of the alias, i.e. the group from the external
+    identity provider
+  * `mount_accessor`: the mount accessor associated with the alias, i.e. the
+    external identity provider.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  object({
+    name           = string
+    mount_accessor = string
+  })
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  null
+  ```
+
+  </div>
+</details>
 <!-- markdownlint-restore -->
 
 ### Outputs
@@ -512,7 +514,6 @@ List of policies IDs or Names to attach to the group.
 </details>
 
 <!-- END TF-DOCS -->
-<!-- END DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
 
 ## 🤝 Contributing
 
@@ -546,5 +547,3 @@ This project is under following licenses (**OR**) :
 
 [main_license]: https://framagit.org/rdeville-public/opentofu/openbao-group/blob/main/LICENSE
 [beerware_license]: https://framagit.org/rdeville-public/opentofu/openbao-group/blob/main/LICENSE.BEERWARE
-
-<!-- END DOTGIT-SYNC BLOCK MANAGED -->
