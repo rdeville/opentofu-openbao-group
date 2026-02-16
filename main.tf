@@ -12,6 +12,7 @@ resource "vault_identity_group" "this" {
 
 # Manage subgroups associated with the group
 resource "vault_identity_group_member_group_ids" "this" {
+  count     = var.type == "external" ? 0 : 1
   namespace = var.namespace_path
 
   exclusive        = true
@@ -21,6 +22,7 @@ resource "vault_identity_group_member_group_ids" "this" {
 
 # Manage identity associated with the group
 resource "vault_identity_group_member_entity_ids" "this" {
+  count     = var.type == "external" ? 0 : 1
   namespace = var.namespace_path
 
   exclusive         = true
