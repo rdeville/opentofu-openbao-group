@@ -34,17 +34,6 @@ variable "metadata" {
   nullable = false
 }
 
-variable "skip_member_group_verification" {
-  type        = bool
-  description = <<-EOM
-  Boolean to skip evaluation of the existence of subgroups.
-  Useful when deploying subgroups with parent groups.
-  EOM
-
-  default  = false
-  nullable = false
-}
-
 variable "member_group_ids" {
   type        = set(string)
   description = <<-EOM
@@ -53,17 +42,6 @@ variable "member_group_ids" {
   EOM
 
   default  = []
-  nullable = false
-}
-
-variable "skip_member_entity_verification" {
-  type        = bool
-  description = <<-EOM
-  Boolean to skip evaluation of the existence of subgroups.
-  Useful when deploying subgroups with parent groups.
-  EOM
-
-  default  = false
   nullable = false
 }
 
