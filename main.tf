@@ -38,3 +38,12 @@ resource "vault_identity_group_policies" "this" {
   group_id  = vault_identity_group.this.id
   policies  = var.policies
 }
+
+resource "vault_identity_group_alias" "this" {
+  count     = var.alias != null && var.type == "external" ? 1 : 0
+  namespace = var.namespace_path
+
+  name           = var.alias.name
+  mount_accessor = var.alias.mount_accessor
+  canonical_id   = vault_identity_group.this.id
+}

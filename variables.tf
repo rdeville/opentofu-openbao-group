@@ -64,3 +64,20 @@ variable "policies" {
 
   default = []
 }
+
+variable "alias" {
+  type = object({
+    name           = string
+    mount_accessor = string
+  })
+  description = <<EOM
+  Object to specify alias to attach to the group. Object support following
+  arguments:
+  * `name`: String, the name of the alias, i.e. the group from the external
+    identity provider
+  * `mount_accessor`: the mount accessor associated with the alias, i.e. the
+    external identity provider.
+  EOM
+
+  default = null
+}
