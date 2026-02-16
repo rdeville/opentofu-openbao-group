@@ -1,6 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.0 (2026-02-16)
+
+### ✨ Minor
+
+  * ✨ Add support for group alias and fix minor bugs (!4) by Romain Deville ([`ffe3d11`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/ffe3d1134ba2ae8e836012465500c1b3fc699390))
+  * ✨ Add support for group alias setup when group is external by Romain Deville ([`9359ac8`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/9359ac8444b549fcfcbe9b04fb00d029ec443318)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️ Update type for variable member_endity_ids and its usage in main.tf by Romain Deville ([`aab3430`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/aab3430742b29d98b00e22e51f6e781a3f3c2fe9)) 🔏
+  * 🐛 Add boolean to not deploy membership if external group by Romain Deville ([`5b4f26d`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/5b4f26d0eea7845ef2444f49a63aa44128a2cd62)) 🔏
+  * 🔧(pre-commit): Remove terraform-docs step from pre-commit by Romain Deville ([`d554566`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/d554566c849d9de9b34b4b9dc0d131909ce27e44)) 🔏
+
+### 🔊 Others
+
+  * 📝 Update README with tf-docs and new examples by Romain Deville ([`070c6ff`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/070c6ff0511acf8392e3965b9131defe24275da8)) 🔏
+  * 🔥 Remove useless variables by Romain Deville ([`52089f1`](https://framagit.org/rdeville-public/opentofu/openbao-group/-/commit/52089f175eb1ae053d1aada78160c905d080fde6)) 🔏
+
 ## v0.1.1 (2025-10-05)
 
 ### 🩹 Patch
